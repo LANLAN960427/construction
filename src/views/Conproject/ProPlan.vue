@@ -1,5 +1,5 @@
 <template>
-  <div class="proquery">
+  <div class="proplan">
     <van-cell-group>
       <van-field v-model="data" label="项目编号" :disabled="edit" placeholder="请输入项目编号" />
       <van-field v-model="data" label="项目名称" :disabled="edit" placeholder="请输入项目名称" />
@@ -23,7 +23,7 @@
           <van-picker show-toolbar title="请选择" :columns="payment" @cancel="paymentShow=false" @confirm="paymentConfirm" />
         </van-popup>
       </van-cell-group>
-      <van-cell title="审查情况" is-link value="详情" @click="jumpPage('profession')" />
+      <van-cell title="审查情况" is-link value="详情" @click="jumpPage('professions')" />
       <!-- <van-field v-model="data" label="审查情况" :disabled="edit" is-link @click="jumpPage('profession')" /> -->
       <van-cell-group class="info-pro">
         <span class="pro-label">合格证时间</span>
@@ -33,7 +33,6 @@
       <van-field v-model="data" label="合格证编号" :disabled="edit" placeholder="请输入合格证编号" />
       <van-field v-model="data" label="审查师签名" :disabled="edit" placeholder="请输入审查师签名" />
       <van-field v-model="data" label="审查师电话" :disabled="edit" placeholder="请输入审查师电话" />
-      <van-field v-model="data" label="工程规划许可证" :disabled="edit" placeholder="请输入工程规划许可证" />
     </van-cell-group>
   </div>
 </template>
@@ -45,8 +44,8 @@ export default {
     return {
       edit: false,
       data: "",
-      checkShow: false,
       paymentShow: false,
+      checkShow: false,
       pactShow: false,
       hgdataShow: false,
       pactValue: "请选择合同情况",
@@ -89,7 +88,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.proquery {
+.proplan {
   width: 100%;
   .info-pro {
     display: flex;

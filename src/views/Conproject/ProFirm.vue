@@ -1,5 +1,5 @@
 <template>
-  <div class="proquery">
+  <div class="profirm">
     <van-cell-group>
       <van-field v-model="data" label="项目编号" :disabled="edit" placeholder="请输入项目编号" />
       <van-field v-model="data" label="项目名称" :disabled="edit" placeholder="请输入项目名称" />
@@ -23,17 +23,16 @@
           <van-picker show-toolbar title="请选择" :columns="payment" @cancel="paymentShow=false" @confirm="paymentConfirm" />
         </van-popup>
       </van-cell-group>
-      <van-cell title="审查情况" is-link value="详情" @click="jumpPage('profession')" />
-      <!-- <van-field v-model="data" label="审查情况" :disabled="edit" is-link @click="jumpPage('profession')" /> -->
+      <van-cell title="审查情况" is-link value="详情" @click="jumpPage('professions')"/>
       <van-cell-group class="info-pro">
         <span class="pro-label">合格证时间</span>
         <span class="pro-select" @click="hgdataShow=true">{{new Date(hgcurrentDate).Format("yyyy-MM-dd")}}</span>
       </van-cell-group>
       <van-datetime-picker v-show="hgdataShow" v-model="hgcurrentDate" type="date" class="pro-date" @cancel="hgdataShow=false" @confirm="hgfirm" />
       <van-field v-model="data" label="合格证编号" :disabled="edit" placeholder="请输入合格证编号" />
+            <van-field v-model="data" label="审查师" :disabled="edit" placeholder="请输入审查师" />
       <van-field v-model="data" label="审查师签名" :disabled="edit" placeholder="请输入审查师签名" />
       <van-field v-model="data" label="审查师电话" :disabled="edit" placeholder="请输入审查师电话" />
-      <van-field v-model="data" label="工程规划许可证" :disabled="edit" placeholder="请输入工程规划许可证" />
     </van-cell-group>
   </div>
 </template>
@@ -46,13 +45,13 @@ export default {
       edit: false,
       data: "",
       checkShow: false,
-      paymentShow: false,
       pactShow: false,
       hgdataShow: false,
+      paymentShow:false,
       pactValue: "请选择合同情况",
-      paymentValue: "请选择缴费情况",
+      paymentValue:"请选择缴费情况",
       contact: ["已签", "未签"],
-      payment: ["已缴费", "未缴费"],
+      payment:["已缴费","未缴费"],
       checkDate: new Date().Format("yyyy-MM-dd"),
       hgcurrentDate: new Date()
     };
@@ -74,7 +73,7 @@ export default {
       this.hgcurrentDate = res;
       this.hgdataShow = false;
     },
-    paymentConfirm(res) {
+    paymentConfirm(res){
       this.paymentValue = res;
       this.paymentShow = false;
     },
@@ -89,7 +88,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.proquery {
+.profirm {
   width: 100%;
   .info-pro {
     display: flex;

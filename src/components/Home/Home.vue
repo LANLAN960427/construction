@@ -1,19 +1,10 @@
 <template>
   <div class="home">
-    <van-nav-bar :title="title" :left-arrow="isBack" @click-left="onBack" @click-right="onMenu">
-      <van-icon name="pending-evaluate" slot="right" class="home-icon" />
+    <van-nav-bar :title="title" :left-arrow="isBack" @click-left="onBack">
     </van-nav-bar>
     <router-view class="content"></router-view>
     <van-tabbar v-model="active" v-show="isTabbar">
-      <van-tabbar-item icon="wap-home" @click="jumpTabs('index')">首页</van-tabbar-item>
-      <van-tabbar-item icon="shop" @click="jumpTabs('classify')">挑货</van-tabbar-item>
-      <van-tabbar-item icon="cart" @click="jumpTabs('cart')">货仓</van-tabbar-item>
-      <!-- <van-tabbar-item @click="jumpTabs('apply')">
-        <i slot="icon" slot-scope="props" class="iconfont icon-yingyong-" />应用</van-tabbar-item> -->
-      <!-- <van-tabbar-item icon="records" @click="jumpTabs('contact')">通讯录</van-tabbar-item> -->
-      <!-- <van-tabbar-item @click="jumpTabs('count')">
-        <i slot="icon" slot-scope="props" class="iconfont icon-icon1" />统计</van-tabbar-item> -->
-      <van-tabbar-item icon="contact" @click="jumpTabs('users')">我的</van-tabbar-item>
+      <van-tabbar-item icon="wap-home">首页</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
@@ -23,7 +14,7 @@ import computed from "./../../assets/js/computed.js";
 export default {
   data() {
     return {
-      title: "材博汇",
+      title: "建工门户",
       isBack: false,
       isTabbar: true,
       active: 0
@@ -66,13 +57,6 @@ export default {
     onBack() {
       this.$router.go(-1);
     },
-    onMenu() {
-      this.$router.push({ name: "msgList" });
-    },
-    jumpTabs(name) {
-      this.$store.commit("tabActive", this.active);
-      this.$router.replace({ name });
-    }
   },
   computed,
   created() {
