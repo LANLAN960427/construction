@@ -3,9 +3,6 @@
     <van-nav-bar :title="title" :left-arrow="isBack" @click-left="onBack">
     </van-nav-bar>
     <router-view class="content"></router-view>
-    <van-tabbar v-model="active" v-show="isTabbar">
-      <van-tabbar-item icon="wap-home">首页</van-tabbar-item>
-    </van-tabbar>
   </div>
 </template>
 <script>
@@ -116,7 +113,6 @@ export default {
     }
   }
   .content {
-    background-color: #f6f6f6;
     position: absolute;
     left: 0;
     right: 0;

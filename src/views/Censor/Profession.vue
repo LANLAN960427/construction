@@ -19,10 +19,6 @@
               <span class="row-left">复审时间：{{fsdate}}</span>
               <span class="row-right">设计院回复时间：{{twohfdate}}</span>
             </div>
-            <div class="content-row">
-              <span class="row-left">姓名：{{name}}</span>
-              <span class="row-right">电话：{{telphone}}</span>
-            </div>
           </div>
         </div>
       </div>

@@ -8,6 +8,9 @@
           </div>
           <div class="item-content">
             <div class="content-row">
+              <span>审查师：{{scname}}</span>
+            </div>
+            <div class="content-row">
               <span class="row-left">审查师签名：{{scname}}</span>
               <span class="row-right">审查师电话：{{scphone}}</span>
             </div>
@@ -38,8 +41,7 @@ export default {
       fsdate: "2018-8-20",
       twohfdate: "2018-8-21",
       name: "李四",
-      telphone: "18956458566",
-      qiangtiao: "强条11111111111111111111111111111111111111"
+      telphone: "18956458566"
     };
   },
   computed,

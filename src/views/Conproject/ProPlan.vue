@@ -31,8 +31,7 @@
       </van-cell-group>
       <van-datetime-picker v-show="hgdataShow" v-model="hgcurrentDate" type="date" class="pro-date" @cancel="hgdataShow=false" @confirm="hgfirm" />
       <van-field v-model="data" label="合格证编号" :disabled="edit" placeholder="请输入合格证编号" />
-      <van-field v-model="data" label="审查师签名" :disabled="edit" placeholder="请输入审查师签名" />
-      <van-field v-model="data" label="审查师电话" :disabled="edit" placeholder="请输入审查师电话" />
+      <van-cell title="设计院人员备案信息" is-link value="详情" @click="jumpPage('promptly')" />
     </van-cell-group>
   </div>
 </template>
@@ -117,9 +116,3 @@ export default {
   }
 }
 </style>
-<style lang="less">
-.van-cell__title {
-  max-width: 110px !important;
-}
-</style>
-

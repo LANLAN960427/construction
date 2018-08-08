@@ -8,6 +8,9 @@ import UnFinished from "./views/Conproject/UnFinished.vue";
 import Index from "./views/Index/Index.vue";
 import Profession from "./views/Censor/Profession.vue";
 import Professions from "./views/Censor/Professions.vue";
+import Promptly from "./views/Censor/Promptly.vue";
+import Probodel from "./views/Censor/Probodel.vue";
+import Login from "./views/Login/Login.vue";
 Vue.use(Router);
 
 export default new Router({
@@ -24,7 +27,7 @@ export default new Router({
           name: "index",
           component: Index,
           meta: {
-            title: "主页" //页面标题
+            title: "项目信息查询" //页面标题
           }
         },
         {
@@ -73,6 +76,30 @@ export default new Router({
           component: Professions,
           meta: {
             title: "审查情况" //页面标题
+          }
+        },
+        {
+          path: "/login/login",
+          name: "login",
+          component: Login,
+          meta: {
+            title: "主页" //页面标题
+          }
+        },
+        {
+          path: "/censor/promptly",
+          name: "promptly",
+          component: Promptly,
+          meta: {
+            title: "设计人员备案信息" //页面标题
+          }
+        },
+        {
+          path: "/censor/probodel",
+          name: "probodel",
+          component: Probodel,
+          meta: {
+            title: "设计人员备案信息" //页面标题
           }
         },
       ]
