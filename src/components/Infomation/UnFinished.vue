@@ -4,21 +4,18 @@
     <van-cell-group>
       <!-- 项目概况 -->
       <van-collapse v-model="activeNames">
-        <van-collapse-item class="itemData" title="项目概况" v-for="(item,index) in queryData.prj_info" :key="index">
+        <van-collapse-item class="itemData" name="项目概况" title="项目概况" v-for="(item,index) in queryData.prj_info" :key="index">
           <!-- :name="index" -->
           <van-field v-model="item.prj_no" label="项目编号" disabled />
           <van-field v-model="item.prj_name" label="项目名称" disabled />
           <van-field v-model="item.prj_js_dw" label="建设单位名称" disabled />
           <van-field v-model="item.prj_jf" label="缴费情况" disabled />
         </van-collapse-item>
-      </van-collapse>
       <!-- 勘察设计单位回复 -->
       <div class="pro-data">
         <div class="pro-card">
           <div class="pro-item">
-            <van-collapse v-model="activeNamestwo">
-              <van-collapse-item class="vanData" title="勘察设计单位回复">
-                <!-- :name="index" -->
+              <van-collapse-item class="vanData" name="勘察设计单位回复" title="勘察设计单位回复">
                 <div class="item-data" v-for="(item,index) in queryData.prj_shencha" :key="index">
                   <div class="item-content">
                     <div class="content-row">
@@ -29,17 +26,10 @@
                   </div>
                 </div>
               </van-collapse-item>
-            </van-collapse>
           </div>
-        </div>
-      </div>
       <!-- 审查师复审 -->
-      <div class="pro-data">
-        <div class="pro-card">
           <div class="pro-item">
-            <van-collapse v-model="activeNamesthree">
-              <van-collapse-item class="vanData" title="审查师复审">
-                <!-- :name="index" -->
+              <van-collapse-item class="vanData" name="审查师复审" title="审查师复审">
                 <div class="item-data" v-for="(item,index) in queryData.prj_shencha" :key="index">
                   <div class="item-title">
                     <span class="title">{{item.sc_zy}}</span>
@@ -54,29 +44,31 @@
                   </div>
                 </div>
               </van-collapse-item>
-            </van-collapse>
           </div>
         </div>
       </div>
+      </van-collapse>
     </van-cell-group>
     <!-- </el-scrollbar> -->
   </div>
 </template>
 <script>
 import computed from "./../../assets/js/computed.js";
-
 export default {
   data() {
     return {
       type: "",
       queryData: {},
-      activeNames: [0, 1, 2, 3, 4, 5, 6, 7],
-      activeNamestwo: [0, 1, 2, 3, 4, 5, 6, 7],
-      activeNamesthree: [0, 1, 2, 3, 4, 5, 6, 7]
+      activeNames: ["项目概况", "勘察设计单位回复", "审查师复审"]
     };
   },
   computed,
-  methods: {}
+  methods: {},
+  mounted() {
+    this.queryData = this.queryDatas.data;
+    this.type = this.queryDatas.type;
+    console.log(this.type);
+  }
 };
 </script>
 <style lang="less" scoped>

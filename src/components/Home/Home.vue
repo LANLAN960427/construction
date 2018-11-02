@@ -12,40 +12,15 @@ export default {
     return {
       title: "建工施工图审查进度信息查询",
       isBack: false,
-      isTabbar: true,
       active: 0
     };
   },
   watch: {
     $route(to) {
-      this.title = to.meta.title;
-      if (
-        to.name !== "index" &&
-        to.name !== "classify" &&
-        to.name !== "cart" &&
-        to.name !== "users"
-      ) {
+      if (to.name !== "index") {
         this.isBack = true;
-        this.isTabbar = false;
       } else {
         this.isBack = false;
-        this.isTabbar = true;
-        switch (to.name) {
-          case "index":
-            this.active = 0;
-            break;
-          case "classify":
-            this.active = 1;
-            break;
-          case "cart":
-            this.active = 2;
-            break;
-          case "users":
-            this.active = 3;
-            break;
-          default:
-            this.active = this.tabActive;
-        }
       }
     }
   },
@@ -57,38 +32,11 @@ export default {
   computed,
   created() {
     const current = this.$router.history.current;
-    this.title = current.meta.title;
-    if (
-      current.name !== "index" &&
-      current.name !== "classify" &&
-      current.name !== "cart" &&
-      current.name !== "users"
-    ) {
+    if (current.name !== "index") {
       this.isBack = true;
-      this.isTabbar = false;
     } else {
       this.isBack = false;
-      this.isTabbar = true;
-      switch (current.name) {
-        case "index":
-          this.active = 0;
-          break;
-        case "classify":
-          this.active = 1;
-          break;
-        case "cart":
-          this.active = 2;
-          break;
-        case "users":
-          this.active = 3;
-          break;
-        default:
-          this.active = this.tabActive;
-      }
     }
-  },
-  mounted() {
-    // this.active = this.tabActive;
   }
 };
 </script>

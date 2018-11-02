@@ -13,8 +13,8 @@
           <van-field :value="item.prj_reg_d" label="登记日期：" disabled />
           <van-field :value="item.prj_ht" label="合同情况：" disabled />
           <van-field :value="item.prj_jf" label="缴费情况：" disabled />
-          <van-field :value="item.prj_xkz" label="项目许可证：" disabled />
-          <van-field :value="item.prj_xk_d" label="取得时间：" disabled />
+          <van-field :value="item.prj_xkz" label="项目许可证：" disabled v-if="type === 'st' || type === 'sj'" />
+          <van-field :value="item.prj_xk_d" label="取得时间：" disabled v-if="type === 'st' || type === 'sj'" />
           <van-field :value="item.prj_hgz_d" label="合格证时间：" disabled />
           <van-field :value="item.prj_hgz_no" label="合格证编号：" disabled />
           <van-field :value="item.prj_xkz_gh" label="工程规划许可证：" disabled />
@@ -27,7 +27,6 @@
             <div class="item-data" v-for="(item,index) in queryData.prj_shencha" :key="index">
               <div class="item-title">
                 <span class="title">{{item.sc_zy}}</span>
-                <span class="text-underline"></span>
               </div>
               <div class="item-content">
                 <div class="content-row">
@@ -35,7 +34,7 @@
                     <img :src="'data:image/jpeg;base64,'+item.sc_qm" style="max-width:40%;" data-bd-imgshare-binded="1">
                   </span>
                 </div>
-                <div class="content-row">
+                <div class="content-row" v-if="type === 'st'">
                   <span class="row-left">审查师：{{item.sc_scs}}</span>
                 </div>
                 <div class="content-row">
@@ -60,7 +59,7 @@
 
         <!-- 强条 -->
         <div class="pro-item">
-          <van-collapse-item class="vanData" name="强条" title="强条">
+          <van-collapse-item class="vanData" name="强条" title="强条" v-if="type === 'st' || type === 'sj'">
             <div class="item-data" v-for="(item,index) in queryData.prj_qt" :key="index">
               <div class="item-title">
                 <span class="title">{{item.qt_zy}}</span>
@@ -93,7 +92,6 @@
               </div>
             </div>
           </van-collapse-item>
-
         </div>
       </div>
     </van-collapse>
@@ -115,6 +113,7 @@ export default {
   mounted() {
     this.queryData = this.queryDatas.data;
     this.type = this.queryDatas.type;
+    console.log(this.queryData);
   }
 };
 </script>
