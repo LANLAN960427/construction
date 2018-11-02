@@ -2,9 +2,6 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./components/Home/Home";
 import Index from "./views/Index/Index.vue";
-import Profession from "./views/Censor/Profession.vue";
-import Promptly from "./views/Censor/Promptly.vue";
-import Probodel from "./views/Censor/Probodel.vue";
 import InfoItem from "./views/Conproject/InfoItem.vue";
 Vue.use(Router);
 
@@ -13,10 +10,10 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [{
     path: "/",
-    redirect: "/index/index",
+    redirect: "/index",
     component: Home,
     children: [{
-        path: "/index/index",
+        path: "/index/:id",
         name: "index",
         component: Index,
         meta: {
@@ -24,31 +21,7 @@ export default new Router({
         }
       },
       {
-        path: "/censor/profession",
-        name: "profession",
-        component: Profession,
-        meta: {
-          title: "审查情况" //页面标题
-        }
-      },
-      {
-        path: "/censor/promptly",
-        name: "promptly",
-        component: Promptly,
-        meta: {
-          title: "设计人员备案信息" //页面标题
-        }
-      },
-      {
-        path: "/censor/probodel",
-        name: "probodel",
-        component: Probodel,
-        meta: {
-          title: "设计人员备案信息" //页面标题
-        }
-      },
-      {
-        path: "/conproject/infoitem",
+        path: "/project/info",
         name: "infoitem",
         component: InfoItem,
         meta: {

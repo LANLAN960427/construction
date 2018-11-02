@@ -10,20 +10,21 @@
           <span class="input">
             项目编号：
           </span>
-          <input v-model.trim="projectnumber" type="text" name="projectnumber" placeholder="请输入项目编号" autocomplete="off">
+          <input v-model.trim="projectNo" type="text" name="projectNo" placeholder="请输入项目编号" autocomplete="off">
         </div>
         <div class="login-form-input">
           <span class="input">
             口令：
           </span>
-          <input v-model.trim="projectcontacts" type="text" name="projectcontacts" placeholder="请输入口令" autocomplete="off">
+          <input v-model.trim="projectContacts" type="text" name="projectContacts" placeholder="请输入口令" autocomplete="off">
+        </div>
+        <div class="login-form-input login-form-button">
+          <div class="button-option">
+            <van-button type="primary" native-type="submit">查询</van-button>
+          </div>
         </div>
       </form>
-      <div class="login-form-input login-form-button">
-        <div class="button-option">
-          <van-button type="primary" native-type="submit" @click="getData">查询</van-button>
-        </div>
-      </div>
+
     </div>
     <div class="footer">
       <a href="http://www.yilongchina.com/">技术支持：易隆软件</a>
@@ -39,53 +40,34 @@ export default {
   data() {
     return {
       banner: "",
-      projectnumber: "JG2018-0689-HY",
-      projectcontacts: "10010"
+      projectNo: "",
+      projectContacts: ""
     };
   },
   computed,
   methods: {
-    getData() {
-      if (this.projectnumber == "" || this.projectcontacts == "") {
-        alert("项目编号和口令不能为空");
-        return;
+    searchProject() {
+      if (this.projectNo && this.projectContacts) {
+        index.getData(this.projectNo, this.projectContacts).then(res => {
+          if (res.type) {
+            this.$store.commit("queryDatas", res);
+            this.$router.push({
+              name: "infoitem"
+            });
+          } else {
+            this.$toast.fail("没有查到相关信息");
+          }
+        });
+      } else {
+        this.$toast.fail("项目编号和口令不能为空");
       }
-      index.getData(this.projectnumber, this.projectcontacts).then(res => {
-        if (res.type) {
-          this.$store.commit("queryDatas", res);
-          this.$router.push({
-            name: "infoitem"
-          });
-        } else {
-          this.$toast.fail("没有查到相关信息");
-        }
-      });
-      // request
-      //   .get(
-      //     "/Expand/prjInfo.ashx?extype=get_prjInfo&prjNo=" +
-      //       this.projectnumber +
-      //       "&psw=" +
-      //       this.projectcontacts
-      //   )
-      //   .then(response => {
-      //     console.log(response);
-      //     this.queryData = response.data;
-
-      //     if (this.queryData.type != "") {
-      //       this.$router.push({
-      //         name: "infoitem",
-      //         params: { queryData: this.queryData }
-      //       });
-      //     } else {
-      //       alert("没有查到相关信息~");
-      //     }
-      //   })
-      //   .catch(function(error) {
-      //     alert(error);
-      //   });
     }
   },
-  mounted() {}
+  mounted() {
+    // JG2018-0689-HY
+    // 10010
+    this.projectNo = this.$route.params.id;
+  }
 };
 </script>
 

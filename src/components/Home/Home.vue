@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <van-nav-bar :title="title" :left-arrow="isBack" @click-left="onBack">
-    </van-nav-bar>
+    <van-nav-bar :title="title" :left-arrow="isBack" @click-left="onBack"></van-nav-bar>
     <router-view class="content"></router-view>
   </div>
 </template>
@@ -53,7 +52,7 @@ export default {
   methods: {
     onBack() {
       this.$router.go(-1);
-    },
+    }
   },
   computed,
   created() {
@@ -90,7 +89,6 @@ export default {
   },
   mounted() {
     // this.active = this.tabActive;
-
   }
 };
 </script>
@@ -104,6 +102,7 @@ export default {
   left: 0;
   right: 0;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   .van-nav-bar {
     color: #fff;
     background-color: #00a0e9;
@@ -119,6 +118,7 @@ export default {
     top: 46px;
     bottom: 0;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 </style>

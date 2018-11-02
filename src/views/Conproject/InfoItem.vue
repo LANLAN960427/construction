@@ -18,9 +18,9 @@ export default {
   data() {
     return {};
   },
-  components:{
-     proquery,
-     unfinished,
+  components: {
+    proquery,
+    unfinished
   },
   computed,
   methods: {},
