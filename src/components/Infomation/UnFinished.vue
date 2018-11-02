@@ -64,13 +64,10 @@
 </template>
 <script>
 import computed from "./../../assets/js/computed.js";
-import queryData from "./../../assets/js/api.js";
 
 export default {
   data() {
     return {
-      // queryData:this.$route.params.queryData,
-      queryData,
       edit: false,
       activeNames: [0, 1, 2, 3, 4, 5, 6, 7],
       activeNamestwo: [0, 1, 2, 3, 4, 5, 6, 7],

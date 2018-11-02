@@ -8,4 +8,7 @@ import {
 } from 'vuex';
 
 export default mapState({
+  queryDatas: state => {
+    return state.queryDatas;
+  },
 })

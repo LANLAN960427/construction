@@ -12,7 +12,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   plugins: [createPersistedState()],
   //数据源申明
-  state: {},
+  state: {
+    queryDatas: ""
+  },
   //写入缓存并同步state
-  mutations: {}
+  mutations: {
+    queryDatas: (state, val) => {
+      state.queryDatas = val;
+    },
+  }
 });

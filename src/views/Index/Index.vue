@@ -33,7 +33,7 @@
 
 <script>
 import computed from "./../../assets/js/computed.js";
-import request from "./../../assets/js/request.js";
+import { index } from "./../../assets/js/api.js";
 export default {
   name: "login",
   data() {
@@ -50,28 +50,39 @@ export default {
         alert("项目编号和口令不能为空");
         return;
       }
-      request
-        .get(
-          "/Expand/prjInfo.ashx?extype=get_prjInfo&prjNo=" +
-            this.projectnumber +
-            "&psw=" +
-            this.projectcontacts
-        )
-        .then(response => {
-          this.queryData = response.data;
+      index.getData(this.projectnumber, this.projectcontacts).then(res => {
+        if (res.type) {
+          this.$store.commit("queryDatas", res);
+          this.$router.push({
+            name: "infoitem"
+          });
+        } else {
+          this.$toast.fail("没有查到相关信息");
+        }
+      });
+      // request
+      //   .get(
+      //     "/Expand/prjInfo.ashx?extype=get_prjInfo&prjNo=" +
+      //       this.projectnumber +
+      //       "&psw=" +
+      //       this.projectcontacts
+      //   )
+      //   .then(response => {
+      //     console.log(response);
+      //     this.queryData = response.data;
 
-          if (this.queryData.type != "") {
-            this.$router.push({
-              name: "infoitem",
-              params: { queryData: this.queryData }
-            });
-          } else {
-            alert("没有查到相关信息~");
-          }
-        })
-        .catch(function(error) {
-          alert(error);
-        });
+      //     if (this.queryData.type != "") {
+      //       this.$router.push({
+      //         name: "infoitem",
+      //         params: { queryData: this.queryData }
+      //       });
+      //     } else {
+      //       alert("没有查到相关信息~");
+      //     }
+      //   })
+      //   .catch(function(error) {
+      //     alert(error);
+      //   });
     }
   },
   mounted() {}
