@@ -16,7 +16,7 @@
           <span class="input">
             口令：
           </span>
-          <input v-model.trim="projectContacts" type="text" name="projectContacts" placeholder="请输入口令" autocomplete="off">
+          <input v-model.trim="projectContacts" type="password" name="projectContacts" placeholder="请输入口令" autocomplete="off">
         </div>
         <div class="login-form-input login-form-button">
           <div class="button-option">
@@ -52,7 +52,7 @@ export default {
           if (res.type) {
             this.$store.commit("queryDatas", res);
             this.$router.push({
-              name: "infoitem"
+              name: "infoItem"
             });
           } else {
             this.$toast.fail("没有查到相关信息");
@@ -64,8 +64,6 @@ export default {
     }
   },
   mounted() {
-    // JG2018-0689-HY
-    // 10010
     this.projectNo = this.$route.params.id;
   }
 };

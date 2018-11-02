@@ -22,7 +22,7 @@ export default new Router({
       },
       {
         path: "/project/info",
-        name: "infoitem",
+        name: "infoItem",
         component: InfoItem,
         meta: {
           title: "项目信息查询" //页面标题
