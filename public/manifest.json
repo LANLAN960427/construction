@@ -1,11 +1,13 @@
 {
   "name": "建工施工图审查进度信息查询",
   "short_name": "建工",
-  "icons": [{
-    "src": "./img/icons/favicon-512x512.ico",
-    "sizes": "512x512",
-    "type": "image/icon"
-  }],
+  "icons": [
+    {
+      "src": "./img/icons/favicon-512x512.ico",
+      "sizes": "512x512",
+      "type": "image/icon"
+    }
+  ],
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
