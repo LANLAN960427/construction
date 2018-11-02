@@ -3,50 +3,75 @@
     <div class="login-logo">
       <i class="iconfont icon-chaxun"></i>
     </div>
-    <div class="login-title">项目信息查询</div>
+    <div class="login-title">建工施工图审查进度信息查询</div>
     <div class="login-form">
-      <form>
+      <form @submit.prevent="searchProject">
         <div class="login-form-input">
           <span class="input">
             项目编号：
           </span>
-          <input v-model="loginName" type="text" name="loginName" placeholder="请输入项目编号" autocomplete="off">
+          <input v-model.trim="projectnumber" type="text" name="projectnumber" placeholder="请输入项目编号" autocomplete="off">
         </div>
         <div class="login-form-input">
           <span class="input">
-            项目联系人：
+            口令：
           </span>
-          <input v-model="xmName" type="text" name="xmName" placeholder="请输入项目联系人" autocomplete="off">
-        </div>
-        <div class="login-form-input login-form-button">
-          <div class="button-option">
-            <van-button type="primary" @click="jumpPage('login')">搜 索</van-button>
-          </div>
+          <input v-model.trim="projectcontacts" type="text" name="projectcontacts" placeholder="请输入口令" autocomplete="off">
         </div>
       </form>
+      <div class="login-form-input login-form-button">
+        <div class="button-option">
+          <van-button type="primary" native-type="submit" @click="getData">查询</van-button>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <a href="http://www.yilongchina.com/">技术支持：易隆软件</a>
     </div>
   </div>
 </template>
 
 <script>
 import computed from "./../../assets/js/computed.js";
-
+import request from "./../../assets/js/request.js";
 export default {
   name: "login",
   data() {
     return {
       banner: "",
-      loginName: "",
-      password: "",
-      xmName:""
+      projectnumber: "JG2018-0689-HY",
+      projectcontacts: "10010"
     };
   },
   computed,
   methods: {
-    jumpPage(name){
-      this.$router.push({
-        name
-      });
+    getData() {
+      if (this.projectnumber == "" || this.projectcontacts == "") {
+        alert("项目编号和口令不能为空");
+        return;
+      }
+      request
+        .get(
+          "/Expand/prjInfo.ashx?extype=get_prjInfo&prjNo=" +
+            this.projectnumber +
+            "&psw=" +
+            this.projectcontacts
+        )
+        .then(response => {
+          this.queryData = response.data;
+
+          if (this.queryData.type != "") {
+            this.$router.push({
+              name: "infoitem",
+              params: { queryData: this.queryData }
+            });
+          } else {
+            alert("没有查到相关信息~");
+          }
+        })
+        .catch(function(error) {
+          alert(error);
+        });
     }
   },
   mounted() {}
@@ -91,8 +116,9 @@ export default {
       > .input {
         flex: 5;
         background-color: white;
-        font-size: 13px;
+        font-size: 14px;
         text-align: center;
+        color: #666;
         .iconfont {
           font-size: 20px;
         }
@@ -137,6 +163,14 @@ export default {
           background-color: #3d95d5;
         }
       }
+    }
+  }
+  .footer {
+    // padding-top: 30px;
+    padding-left: 33%;
+    margin-top: 100px;
+    a {
+      color: darkgray;
     }
   }
 }

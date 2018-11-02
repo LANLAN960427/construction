@@ -1,16 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
-import ProQuery from "./views/Conproject/ProQuery.vue";
 import Home from "./components/Home/Home";
-import ProPlan from "./views/Conproject/ProPlan.vue";
-import ProFirm from "./views/Conproject/ProFirm.vue";
-import UnFinished from "./views/Conproject/UnFinished.vue";
 import Index from "./views/Index/Index.vue";
 import Profession from "./views/Censor/Profession.vue";
-import Professions from "./views/Censor/Professions.vue";
 import Promptly from "./views/Censor/Promptly.vue";
 import Probodel from "./views/Censor/Probodel.vue";
-import Login from "./views/Login/Login.vue";
+import InfoItem from "./views/Conproject/InfoItem.vue";
+import ProDetails from "./views/Censor/ProDetails.vue";
+import ProReview from "./views/Censor/ProReview.vue";
 Vue.use(Router);
 
 export default new Router({
@@ -27,39 +24,7 @@ export default new Router({
           name: "index",
           component: Index,
           meta: {
-            title: "项目信息查询" //页面标题
-          }
-        },
-        {
-          path: "/conproject/proQuery",
-          name: "proQuery",
-          component: ProQuery,
-          meta: {
-            title: "项目信息查询(甲方)" //页面标题
-          }
-        },
-        {
-          path: "/conproject/proPlan",
-          name: "proPlan",
-          component: ProPlan,
-          meta: {
-            title: "项目信息查询(设计院)" //页面标题
-          }
-        },
-        {
-          path: "/conproject/proFirm",
-          name: "proFirm",
-          component: ProFirm,
-          meta: {
-            title: "项目信息查询(审图公司)" //页面标题
-          }
-        },
-        {
-          path: "/conproject/unFinished",
-          name: "unFinished",
-          component: UnFinished,
-          meta: {
-            title: "未完成事项" //页面标题
+            title: "建工施工图审查进度信息查询" //页面标题
           }
         },
         {
@@ -71,19 +36,19 @@ export default new Router({
           }
         },
         {
-          path: "/censor/professions",
-          name: "professions",
-          component: Professions,
+          path: "/censor/proDetails",
+          name: "proDetails",
+          component: ProDetails,
           meta: {
-            title: "审查情况" //页面标题
+            title: "勘察设计单位回复" //页面标题
           }
         },
         {
-          path: "/login/login",
-          name: "login",
-          component: Login,
+          path: "/censor/proreview",
+          name: "proreview",
+          component: ProReview,
           meta: {
-            title: "主页" //页面标题
+            title: "审查师复审" //页面标题
           }
         },
         {
@@ -100,6 +65,14 @@ export default new Router({
           component: Probodel,
           meta: {
             title: "设计人员备案信息" //页面标题
+          }
+        },
+        {
+          path: "/conproject/infoitem",
+          name: "infoitem",
+          component: InfoItem,
+          meta: {
+            title: "项目信息查询" //页面标题
           }
         },
       ]
