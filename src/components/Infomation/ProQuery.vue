@@ -113,7 +113,6 @@ export default {
   mounted() {
     this.queryData = this.queryDatas.data;
     this.type = this.queryDatas.type;
-    console.log(this.queryData);
   }
 };
 </script>
@@ -135,9 +134,6 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        // display: flex;
-        // flex-direction: row;
-        // justify-content: center;
         .title {
           font-weight: 600;
           font-size: 16px;

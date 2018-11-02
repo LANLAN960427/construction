@@ -11,7 +11,6 @@
   </div>
 </template>
 <script>
-import computed from "./../../assets/js/computed.js";
 import proquery from "./../../components/Infomation/ProQuery";
 import unfinished from "./../../components/Infomation/UnFinished";
 export default {
@@ -21,10 +20,7 @@ export default {
   components: {
     proquery,
     unfinished
-  },
-  computed,
-  methods: {},
-  mounted() {}
+  }
 };
 </script>
 <style lang="less" scoped>

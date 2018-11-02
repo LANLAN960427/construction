@@ -65,7 +65,6 @@ export default {
   mounted() {
     this.queryData = this.queryDatas.data;
     this.type = this.queryDatas.type;
-    console.log(this.type);
   }
 };
 </script>

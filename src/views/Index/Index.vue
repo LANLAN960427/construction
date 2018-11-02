@@ -10,13 +10,13 @@
           <span class="input">
             项目编号：
           </span>
-          <input v-model.trim="projectNo" type="text" name="projectNo" placeholder="请输入项目编号" autocomplete="off">
+          <input v-model.trim="projectNo" type="text" name="userName" placeholder="请输入项目编号" autocomplete="off">
         </div>
         <div class="login-form-input">
           <span class="input">
             口令：
           </span>
-          <input v-model.trim="projectContacts" type="password" name="projectContacts" placeholder="请输入口令" autocomplete="off">
+          <input v-model.trim="projectContacts" type="password" name="password" placeholder="请输入口令" autocomplete="off">
         </div>
         <div class="login-form-input login-form-button">
           <div class="button-option">
@@ -64,7 +64,7 @@ export default {
     }
   },
   mounted() {
-    this.projectNo = this.$route.params.id;
+    if (this.$route.params.id) this.projectNo = this.$route.params.id;
   }
 };
 </script>

@@ -26,7 +26,9 @@ export default {
   },
   methods: {
     onBack() {
-      this.$router.go(-1);
+      this.$router.replace({
+        name: "index"
+      });
     }
   },
   computed,
