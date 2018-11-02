@@ -11,10 +11,10 @@
           <van-field v-model="item.prj_js_dw" label="建设单位名称" disabled />
           <van-field v-model="item.prj_jf" label="缴费情况" disabled />
         </van-collapse-item>
-      <!-- 勘察设计单位回复 -->
-      <div class="pro-data">
-        <div class="pro-card">
-          <div class="pro-item">
+        <!-- 勘察设计单位回复 -->
+        <div class="pro-data">
+          <div class="pro-card">
+            <div class="pro-item">
               <van-collapse-item class="vanData" name="勘察设计单位回复" title="勘察设计单位回复">
                 <div class="item-data" v-for="(item,index) in queryData.prj_shencha" :key="index">
                   <div class="item-content">
@@ -26,9 +26,9 @@
                   </div>
                 </div>
               </van-collapse-item>
-          </div>
-      <!-- 审查师复审 -->
-          <div class="pro-item">
+            </div>
+            <!-- 审查师复审 -->
+            <div class="pro-item">
               <van-collapse-item class="vanData" name="审查师复审" title="审查师复审">
                 <div class="item-data" v-for="(item,index) in queryData.prj_shencha" :key="index">
                   <div class="item-title">
@@ -44,9 +44,9 @@
                   </div>
                 </div>
               </van-collapse-item>
+            </div>
           </div>
         </div>
-      </div>
       </van-collapse>
     </van-cell-group>
     <!-- </el-scrollbar> -->
@@ -83,7 +83,6 @@ export default {
         margin-bottom: 10px;
         .item-title {
           padding: 10px 18px;
-          border-bottom: 1px solid #eee;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -101,6 +100,7 @@ export default {
           padding: 5px 18px;
           font-size: 14px;
           color: #666;
+          border-bottom: 1px solid #eee;
           .content-row {
             display: flex;
             align-items: center;
