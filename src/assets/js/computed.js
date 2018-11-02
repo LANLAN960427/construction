@@ -8,7 +8,10 @@ import {
 } from 'vuex';
 
 export default mapState({
+  loaclData: state => {
+    return state.loaclData;
+  },
   queryDatas: state => {
     return state.queryDatas;
-  },
+  }
 })

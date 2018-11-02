@@ -22,3 +22,4 @@ yarn-error.log*
 /mobile
 /*.zip
 /package-lock.json
+/jg

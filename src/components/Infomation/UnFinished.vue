@@ -15,7 +15,10 @@
         <div class="pro-data">
           <div class="pro-item">
             <van-collapse-item class="vanData" name="勘察设计单位回复" title="勘察设计单位回复">
-              <div class="item-data" v-for="(item,index) in queryData.prj_shencha" :key="index">
+              <div class="item-null" v-if="queryData.prj_shencha.length === 0">
+                <span>暂无数据</span>
+              </div>
+              <div v-else class="item-data" v-for="(item,index) in queryData.prj_shencha" :key="index">
                 <div class="item-content">
                   <div class="content-row">
                     <span class="title">{{item.sc_zy}}</span>
@@ -29,7 +32,10 @@
           <!-- 审查师复审 -->
           <div class="pro-item">
             <van-collapse-item class="vanData" name="审查师复审" title="审查师复审">
-              <div class="item-data" v-for="(item,index) in queryData.prj_shencha" :key="index">
+              <div class="item-null" v-if="queryData.prj_shencha.length === 0">
+                <span>暂无数据</span>
+              </div>
+              <div v-else class="item-data" v-for="(item,index) in queryData.prj_shencha" :key="index">
                 <div class="item-title">
                   <span class="title">{{item.sc_zy}}</span>
                   <span class="text-underline"></span>
@@ -56,7 +62,9 @@ export default {
   data() {
     return {
       type: "",
-      queryData: {},
+      queryData: {
+        prj_shencha: []
+      },
       activeNames: ["项目概况", "勘察设计单位回复", "审查师复审"]
     };
   },
@@ -73,10 +81,12 @@ export default {
   width: 100%;
   .pro-data {
     margin-bottom: 10px;
-
     .pro-item {
       background-color: #fff;
       margin-bottom: 5px;
+      .item-null {
+        padding: 30px;
+      }
       .item-title {
         padding: 10px 18px;
         display: flex;
@@ -117,8 +127,10 @@ export default {
 .unfinished {
   .vanData {
     .van-cell {
-      background-color: #4d7a8b;
+      color: #fff;
+      background-color: #00a0e9;
       border: 1px solid #eee;
+      padding: 7px 15px;
       line-height: 20px;
     }
 
@@ -136,8 +148,10 @@ export default {
       color: #333;
     }
     .van-collapse-item__title {
-      background-color: #4d7a8b;
+      color: #fff;
+      background-color: #00a0e9;
       border: 1px solid #eee;
+      padding: 7px 15px;
     }
 
     .van-cell__value--alone,

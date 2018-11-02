@@ -51,6 +51,11 @@ export default {
         index.getData(this.projectNo, this.projectContacts).then(res => {
           if (res.type) {
             this.$store.commit("queryDatas", res);
+            const loaclData = {
+              no: this.projectNo,
+              psw: this.projectContacts
+            };
+            this.$store.commit("loaclData", loaclData);
             this.$router.push({
               name: "infoItem"
             });
@@ -64,7 +69,12 @@ export default {
     }
   },
   mounted() {
-    if (this.$route.params.id) this.projectNo = this.$route.params.id;
+    if (this.$route.params.id) {
+      this.projectNo = this.$route.params.id;
+    } else if (this.loaclData.no && this.loaclData.psw) {
+      this.projectNo = this.loaclData.no;
+      this.projectContacts = this.loaclData.psw;
+    }
   }
 };
 </script>
@@ -106,7 +116,6 @@ export default {
       position: relative;
       > .input {
         flex: 5;
-        background-color: white;
         font-size: 14px;
         text-align: center;
         color: #666;

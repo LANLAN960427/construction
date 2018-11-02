@@ -55,7 +55,7 @@ export default {
   -webkit-overflow-scrolling: touch;
   .van-nav-bar {
     color: #fff;
-    background-color: #00a0e9;
+    background-color: #0f67ab;
     .home-icon {
       font-size: 18px;
       color: #fff;

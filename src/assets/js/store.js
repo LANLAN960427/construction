@@ -13,12 +13,16 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   //数据源申明
   state: {
+    loaclData: {},
     queryDatas: ""
   },
   //写入缓存并同步state
   mutations: {
+    loaclData: (state, val) => {
+      state.loaclData = val;
+    },
     queryDatas: (state, val) => {
       state.queryDatas = val;
-    },
+    }
   }
 });

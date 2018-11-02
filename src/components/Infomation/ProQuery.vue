@@ -6,8 +6,8 @@
         <van-cell-group v-for="(item,index) in queryData.prj_info" :key="index">
           <van-field :value="item.prj_no" label="项目编号：" disabled />
           <van-field :value="item.prj_name" label="项目名称：" disabled />
-          <van-field :value="item.prj_js_dw" label="建设单位名称：" disabled />
-          <van-field :value="item.prj_lx" label="联系人和联系电话：" disabled />
+          <van-field :value="item.prj_js_dw" label="建设单位：" disabled />
+          <van-field :value="item.prj_lx" label="联系人：" disabled />
           <van-field :value="item.prj_yw" label="业务员：" disabled />
           <van-field :value="item.prj_tel" label="联系电话：" disabled />
           <van-field :value="item.prj_reg_d" label="登记日期：" disabled />
@@ -17,21 +17,24 @@
           <van-field :value="item.prj_xk_d" label="取得时间：" disabled v-if="type === 'st' || type === 'sj'" />
           <van-field :value="item.prj_hgz_d" label="合格证时间：" disabled />
           <van-field :value="item.prj_hgz_no" label="合格证编号：" disabled />
-          <van-field :value="item.prj_xkz_gh" label="工程规划许可证：" disabled />
+          <van-field :value="item.prj_xkz_gh" label="规划许可证：" disabled />
         </van-cell-group>
       </van-collapse-item>
       <!-- 审查情况 -->
       <div class="pro-data">
         <div class="pro-item">
           <van-collapse-item class="vanData" name="审查情况" title="审查情况">
-            <div class="item-data" v-for="(item,index) in queryData.prj_shencha" :key="index">
+            <div class="item-null" v-if="queryData.prj_shencha.length === 0">
+              <span>暂无数据</span>
+            </div>
+            <div v-else class="item-data" v-for="(item,index) in queryData.prj_shencha" :key="index">
               <div class="item-title">
                 <span class="title">{{item.sc_zy}}</span>
               </div>
               <div class="item-content">
                 <div class="content-row">
                   <span class="row-left">审查师签名：
-                    <img :src="'data:image/jpeg;base64,'+item.sc_qm" style="max-width:40%;" data-bd-imgshare-binded="1">
+                    <img :src="'data:image/jpeg;base64,'+item.sc_qm" style="width:200px;vertical-align: middle;" data-bd-imgshare-binded="1">
                   </span>
                 </div>
                 <div class="content-row" v-if="type === 'st'">
@@ -60,7 +63,10 @@
         <!-- 强条 -->
         <div class="pro-item">
           <van-collapse-item class="vanData" name="强条" title="强条" v-if="type === 'st' || type === 'sj'">
-            <div class="item-data" v-for="(item,index) in queryData.prj_qt" :key="index">
+            <div class="item-null" v-if="queryData.prj_qt.length === 0">
+              <span>暂无数据</span>
+            </div>
+            <div v-else class="item-data" v-for="(item,index) in queryData.prj_qt" :key="index">
               <div class="item-title">
                 <span class="title">{{item.qt_zy}}</span>
                 <span class="text-underline"></span>
@@ -77,7 +83,10 @@
         <!-- 勘察设计人员备案信息 -->
         <div class="pro-item">
           <van-collapse-item class="vanData" name="勘察设计人员备案信息" title="勘察设计人员备案信息">
-            <div class="item-data" v-for="(item,index) in queryData.prj_sjr" :key="index">
+            <div class="item-null" v-if="queryData.prj_sjr.length === 0">
+              <span>暂无数据</span>
+            </div>
+            <div v-else class="item-data" v-for="(item,index) in queryData.prj_sjr" :key="index">
               <div class="item-title">
                 <span class="title">{{item.sj_zy}}</span>
                 <span class="text-underline"></span>
@@ -104,7 +113,11 @@ export default {
   data() {
     return {
       type: "",
-      queryData: {},
+      queryData: {
+        prj_shencha: [],
+        prj_qt: [],
+        prj_sjr: []
+      },
       activeNames: ["项目概况", "审查情况", "强条", "勘察设计人员备案信息"]
     };
   },
@@ -124,6 +137,9 @@ export default {
     width: 100%;
     .pro-item {
       margin-bottom: 5px;
+      .item-null {
+        padding: 30px;
+      }
       .item-data {
         border: 1px double #eee;
         margin: 10px;
@@ -173,8 +189,10 @@ export default {
 .proquery {
   .vanData {
     .van-cell {
-      background-color: #4d7a8b;
+      color: #fff;
+      background-color: #00a0e9;
       border: 1px solid #eee;
+      padding: 7px 15px;
     }
 
     .van-cell__value--alone,
@@ -191,8 +209,10 @@ export default {
       color: #333;
     }
     .van-collapse-item__title {
-      background-color: #4d7a8b;
+      color: #fff;
+      background-color: #00a0e9;
       border: 1px solid #eee;
+      padding: 7px 15px;
     }
 
     .van-cell__value--alone,
