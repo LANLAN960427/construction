@@ -4,12 +4,12 @@
     <van-cell-group>
       <!-- 项目概况 -->
       <van-collapse v-model="activeNames">
-        <van-collapse-item class="itemData" title="项目概况">
+        <van-collapse-item class="itemData" title="项目概况" v-for="(item,index) in queryData.prj_info" :key="index">
           <!-- :name="index" -->
-          <van-field v-model="queryData.prj_info.prj_no" label="项目编号" disabled />
-          <van-field v-model="queryData.prj_info.prj_name" label="项目名称" disabled />
-          <van-field v-model="queryData.prj_info.prj_js_dw" label="建设单位名称" disabled />
-          <van-field v-model="queryData.prj_info.prj_jf" label="缴费情况" disabled />
+          <van-field v-model="item.prj_no" label="项目编号" disabled />
+          <van-field v-model="item.prj_name" label="项目名称" disabled />
+          <van-field v-model="item.prj_js_dw" label="建设单位名称" disabled />
+          <van-field v-model="item.prj_jf" label="缴费情况" disabled />
         </van-collapse-item>
       </van-collapse>
       <!-- 勘察设计单位回复 -->
@@ -68,7 +68,8 @@ import computed from "./../../assets/js/computed.js";
 export default {
   data() {
     return {
-      edit: false,
+      type: "",
+      queryData: {},
       activeNames: [0, 1, 2, 3, 4, 5, 6, 7],
       activeNamestwo: [0, 1, 2, 3, 4, 5, 6, 7],
       activeNamesthree: [0, 1, 2, 3, 4, 5, 6, 7]
