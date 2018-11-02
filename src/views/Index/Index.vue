@@ -72,7 +72,7 @@ export default {
 <style lang="less" scoped>
 .login {
   width: 100%;
-  padding-top: 15%;
+  padding-top: 10%;
   .login-logo {
     width: 75px;
     height: 75px;
@@ -90,7 +90,7 @@ export default {
   .login-title {
     text-align: center;
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 20px;
     letter-spacing: 1px;
     font-weight: 600;
   }

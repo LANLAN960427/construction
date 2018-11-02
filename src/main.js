@@ -11,13 +11,11 @@ import 'vant/lib/vant-css/index.css';
 import './assets/css/iconfont.css';
 import "./assets/css/theme.less";
 import axios from './assets/js/request';
-import echarts from 'echarts'
 
 Vue.use(Vant);
 Vue.use(Lazyload);
 Vue.prototype.$util = util;
 Vue.prototype.$axios = axios;
-Vue.prototype.$echarts = echarts;
 Vue.config.productionTip = false;
 
 // 路由守卫

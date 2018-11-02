@@ -10,46 +10,47 @@
 // (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
 // (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
 Date.prototype.Format = function (fmt) {
-  var o = {
+  const o = {
     "M+": this.getMonth() + 1, //月份
     "d+": this.getDate(), //日
     "h+": this.getHours(), //小时
     "m+": this.getMinutes(), //分
     "s+": this.getSeconds(), //秒
     "q+": Math.floor((this.getMonth() + 3) / 3), //季度
-    S: this.getMilliseconds() //毫秒
+    "S": this.getMilliseconds() //毫秒
   };
-  if (/(y+)/.test(fmt))
-    fmt = fmt.replace(
-      RegExp.$1,
-      (this.getFullYear() + "").substr(4 - RegExp.$1.length)
-    );
-  for (var k in o)
-    if (new RegExp("(" + k + ")").test(fmt))
-      fmt = fmt.replace(
-        RegExp.$1,
-        RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length)
-      );
+  if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+  for (let k in o)
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
   return fmt;
 };
 
-const formatMoney = function formatMoney(str) {
-  var num = parseFloat(str).toFixed(3); //这里因为我需要两位小数所以做一个限制，你们看情况做小数位的限制
-  var s = num.substring(0, num.length - 1); //只取小数位2位
+const formatDate = (dateStr, formatter = "yyyy-MM-dd") => {
+  if (!dateStr) {
+    return "";
+  }
 
-  return (
-    s &&
-    s.toString().replace(/(\d)(?=(\d{3})+\.)/g, function ($0, $1) {
-      return $1 + ",";
-    })
-  );
+  if (typeof dateStr === "string") {
+    if (dateStr.indexOf(".") > -1) {
+      // 有些日期接口返回带有.0。
+      dateStr = dateStr.substring(0, dateStr.indexOf("."));
+    }
+    // 解决IOS上无法从dateStr parse 到Date类型问题
+    dateStr = dateStr.replace(/-/g, '/');
+  }
+  return new Date(dateStr).Format(formatter);
 };
 
-const xmlData = function xmlData(xml, val) {
-  return "<" + xml + ">" + val + "</" + xml + ">"
+// 格式金额，保留两位小数
+const formatMoney = (str) => {
+  let num = parseFloat(str).toFixed(2);
+
+  return '￥' + (num && num.toString().replace(/(\d)(?=(\d{3})+\.)/g, res => {
+    return res + ",";
+  }));
 };
 
 export default {
   formatMoney,
-  xmlData
+  formatDate
 };
