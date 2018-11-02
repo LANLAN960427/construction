@@ -1,6 +1,6 @@
 <template>
   <div class="infoitem">
-    <van-tabs>
+    <van-tabs sticky>
       <van-tab title='项目信息'>
         <proquery />
       </van-tab>
