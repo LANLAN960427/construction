@@ -124,7 +124,7 @@ export default {
     margin-bottom: 10px;
     width: 100%;
     .pro-item {
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       .item-data {
         border: 1px double #eee;
         margin: 10px;

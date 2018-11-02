@@ -80,7 +80,7 @@ export default {
       width: 100%;
       .pro-item {
         background-color: #fff;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         .item-title {
           padding: 10px 18px;
           display: flex;
