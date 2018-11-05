@@ -7,7 +7,7 @@ import './registerServiceWorker'
 import "normalize.css";
 import Vant from 'vant';
 import { Lazyload } from 'vant';
-import 'vant/lib/vant-css/index.css';
+import 'vant/lib/index.css';
 import './assets/css/iconfont.css';
 import "./assets/css/theme.less";
 import axios from './assets/js/request';
