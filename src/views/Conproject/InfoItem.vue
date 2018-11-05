@@ -1,6 +1,6 @@
 <template>
   <div class="infoitem">
-    <van-tabs sticky>
+    <van-tabs sticky swipeable>
       <van-tab title='项目信息'>
         <proquery />
       </van-tab>
