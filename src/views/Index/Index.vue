@@ -3,7 +3,7 @@
     <div class="login-logo">
       <i class="iconfont icon-chaxun"></i>
     </div>
-    <div class="login-title">建工施工图审查进度信息查询</div>
+    <div class="login-title">广东建工施工图审查进度信息查询</div>
     <div class="login-form">
       <form @submit.prevent="searchProject">
         <div class="login-form-input">
