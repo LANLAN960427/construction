@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <van-nav-bar :title="title" :left-arrow="isBack" @click-left="onBack"></van-nav-bar>
+    <van-nav-bar
+      :title="title"
+      :left-arrow="isBack"
+      @click-left="onBack"
+    ></van-nav-bar>
     <router-view class="content"></router-view>
   </div>
 </template>
@@ -51,6 +55,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
+  overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   .van-nav-bar {
@@ -62,11 +67,13 @@ export default {
     }
   }
   .content {
+    background-color: #fff;
     position: absolute;
     left: 0;
     right: 0;
     top: 46px;
     bottom: 0;
+    overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }

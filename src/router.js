@@ -9,10 +9,10 @@ export default new Router({
   // mode: "history",
   routes: [{
     path: "/",
-    component: Home,
     redirect: "/index",
+    component: Home,
     children: [{
-      path: "/index/:id",
+      path: "/index",
       name: "index",
       component: Index,
       meta: {
@@ -25,6 +25,6 @@ export default new Router({
       meta: {
         title: "项目信息查询" //页面标题
       }
-    }, ]
+    }]
   }]
 });

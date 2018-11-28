@@ -4,25 +4,34 @@
       <i class="iconfont icon-chaxun"></i>
     </div>
     <div class="login-title">广东建工施工图审查进度信息查询</div>
-    <!-- http://173cbh.com/jg/#/ -->
-    <!-- JG2018-0689-HY         10010 -->
     <div class="login-form">
       <form @submit.prevent="searchProject">
         <div class="login-form-input">
-          <span class="input">
-            项目编号：
-          </span>
-          <input v-model.trim="projectNo" type="text" name="userName" placeholder="请输入项目编号" autocomplete="off">
+          <span class="input"> 项目编号： </span>
+          <input
+            v-model.trim="projectNo"
+            type="text"
+            name="userName"
+            placeholder="请输入项目编号"
+            autocomplete="off"
+          >
         </div>
         <div class="login-form-input">
-          <span class="input">
-            口令：
-          </span>
-          <input v-model.trim="projectContacts" type="password" name="password" placeholder="请输入口令" autocomplete="off">
+          <span class="input"> 口令： </span>
+          <input
+            v-model.trim="projectContacts"
+            type="password"
+            name="password"
+            placeholder="请输入口令"
+            autocomplete="off"
+          >
         </div>
         <div class="login-form-input login-form-button">
           <div class="button-option">
-            <van-button type="primary" native-type="submit">查询</van-button>
+            <van-button
+              type="primary"
+              native-type="submit"
+            >查询</van-button>
           </div>
         </div>
       </form>
@@ -71,8 +80,8 @@ export default {
     }
   },
   mounted() {
-    if (this.$route.params.id) {
-      this.projectNo = this.$route.params.id;
+    if (this.$route.query.id) {
+      this.projectNo = this.$route.query.id;
     } else if (this.loaclData.no && this.loaclData.psw) {
       this.projectNo = this.loaclData.no;
       this.projectContacts = this.loaclData.psw;
