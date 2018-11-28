@@ -15,7 +15,7 @@ export default new Router({
         name: "index",
         component: Index,
         meta: {
-          title: "建工施工图审查进度信息查询" //页面标题
+          title: "广东建工施工图审查进度信息查询" //页面标题
         }
       },
       {

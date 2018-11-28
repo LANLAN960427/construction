@@ -128,7 +128,7 @@ export default {
   .vanData {
     .van-cell {
       color: #fff;
-      background-color: #00a0e9;
+      background-color: #4d7a8b;
       border: 1px solid #eee;
       padding: 7px 15px;
       line-height: 20px;
@@ -149,7 +149,7 @@ export default {
     }
     .van-collapse-item__title {
       color: #fff;
-      background-color: #00a0e9;
+      background-color: #4d7a8b;
       border: 1px solid #eee;
       padding: 7px 15px;
     }

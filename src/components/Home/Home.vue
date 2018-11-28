@@ -10,7 +10,7 @@ import computed from "./../../assets/js/computed.js";
 export default {
   data() {
     return {
-      title: "建工施工图审查进度信息查询",
+      title: "广东建工施工图审查进度信息查询",
       isBack: false,
       active: 0
     };
