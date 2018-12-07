@@ -17,19 +17,19 @@ Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
 // 路由守卫
-router.beforeEach((to, from, next) => {
-  //如果未匹配到路由
-  if (to.name == null) {
-    //如果上级也未匹配到路由则跳转首页，如果上级能匹配到则转上级路由
-    from.name == null ? next({
-      name: from.name
-    }) : next({
-      name: "index"
-    })
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   //如果未匹配到路由
+//   if (to.name == null) {
+//     //如果上级也未匹配到路由则跳转首页，如果上级能匹配到则转上级路由
+//     from.name == null ? next({
+//       name: from.name
+//     }) : next({
+//       name: "index"
+//     })
+//   } else {
+//     next();
+//   }
+// });
 
 window.vm = new Vue({
   router,

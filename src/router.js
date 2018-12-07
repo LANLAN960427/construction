@@ -12,7 +12,7 @@ export default new Router({
     redirect: "/index",
     component: Home,
     children: [{
-      path: "/index",
+      path: "/index/:id",
       name: "index",
       component: Index,
       meta: {

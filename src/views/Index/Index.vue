@@ -7,7 +7,7 @@
     <div class="login-form">
       <form @submit.prevent="searchProject">
         <div class="login-form-input">
-          <span class="input"> 项目编号： </span>
+          <span class="input">项目编号：</span>
           <input
             v-model.trim="projectNo"
             type="text"
@@ -17,7 +17,7 @@
           >
         </div>
         <div class="login-form-input">
-          <span class="input"> 口令： </span>
+          <span class="input">口令：</span>
           <input
             v-model.trim="projectContacts"
             type="password"
@@ -28,14 +28,10 @@
         </div>
         <div class="login-form-input login-form-button">
           <div class="button-option">
-            <van-button
-              type="primary"
-              native-type="submit"
-            >查询</van-button>
+            <van-button type="primary" native-type="submit">查询</van-button>
           </div>
         </div>
       </form>
-
     </div>
     <div class="footer">
       <a href="http://www.yilongchina.com/">技术支持：易隆软件</a>
@@ -80,8 +76,8 @@ export default {
     }
   },
   mounted() {
-    if (this.$route.query.id) {
-      this.projectNo = this.$route.query.id;
+    if (this.$route.params.id) {
+      this.projectNo = this.$route.params.id;
     } else if (this.loaclData.no && this.loaclData.psw) {
       this.projectNo = this.loaclData.no;
       this.projectContacts = this.loaclData.psw;
