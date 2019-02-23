@@ -12,19 +12,21 @@ export default new Router({
     redirect: "/index",
     component: Home,
     children: [{
-      path: "/index/:id",
-      name: "index",
-      component: Index,
-      meta: {
-        title: "广东建工施工图审查进度信息查询" //页面标题
+        path: "/index/:id",
+        name: "index",
+        component: Index,
+        meta: {
+          title: "广东建工施工图审查进度信息查询" //页面标题
+        }
+      },
+      {
+        path: "/project/info",
+        name: "infoItem",
+        component: InfoItem,
+        meta: {
+          title: "项目信息查询" //页面标题
+        }
       }
-    }, {
-      path: "/project/info",
-      name: "infoItem",
-      component: InfoItem,
-      meta: {
-        title: "项目信息查询" //页面标题
-      }
-    }]
+    ]
   }]
 });

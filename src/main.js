@@ -10,9 +10,11 @@ import 'vant/lib/index.css';
 import './assets/css/iconfont.css';
 import "./assets/css/theme.less";
 import axios from './assets/js/request';
+// import QRCode from 'qrcode';
 
 Vue.use(Vant);
 Vue.prototype.$util = util;
+// Vue.prototype.$QRCode = QRCode;
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
